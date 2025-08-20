@@ -134,7 +134,7 @@ if not st.session_state.model or not st.session_state.document_text:
 # Header
 st.markdown('<div class="header">', unsafe_allow_html=True)
 st.markdown('<h1>🙅‍♂️ John Wiki</h1>', unsafe_allow_html=True)
-st.markdown('<p>Seu especialista Accountfy</p>', unsafe_allow_html=True)
+st.markdown('<p>Especialista Accountfy</p>', unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Histórico de mensagens
