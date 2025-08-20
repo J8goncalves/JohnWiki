@@ -3,12 +3,6 @@ import google.generativeai as genai
 import requests
 import re
 
-# ================= CONFIGURAÇÃO VIA SECRETS =================
-# ⚠️ CONFIGURE AS SECRETS NO PAINEL DO STREAMLIT CLOUD
-GEMINI_API_KEY = st.secrets.get("GEMINI_API_KEY", "AIzaSyCTBt9OGeQ4p-xVa9lmXiIOC6brftEvwEo")
-GOOGLE_DOCS_URL = st.secrets.get("GOOGLE_DOCS_URL", "https://docs.google.com/document/d/14TxgFZrYflVtwOcWOawevYL69XAAbQuHX8Wx7y5lCBI/edit")
-# ===========================================================
-
 @st.cache_data(ttl=3600, show_spinner=False)
 def load_document():
     try:
