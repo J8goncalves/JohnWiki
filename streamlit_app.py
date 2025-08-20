@@ -7,17 +7,24 @@ import requests
 import re
 import os
 
-# ================= CONFIGURAÇÃO HÍBRIDA =================
-# Funciona tanto localmente quanto no Streamlit Cloud
+def get_secret(key, default=""):
+    try:
+        # Tenta do Streamlit secrets (Cloud)
+        if hasattr(st, 'secrets') and key in st.secrets:
+            return st.secrets[key]
+    except:
+        pass
+    
+    try:
+        # Tenta de variáveis de ambiente
+        return os.environ[key]
+    except KeyError:
+        # Fallback para valor padrão ou vazio
+        return default
 
-# Tenta obter do secrets (Streamlit Cloud)
-try:
-    GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
-    GOOGLE_DOCS_URL = st.secrets["GOOGLE_DOCS_URL"]
-except (KeyError, FileNotFoundError):
-    # Fallback para variáveis de ambiente ou valores padrão
-    GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-    GOOGLE_DOCS_URL = os.environ.get("GOOGLE_DOCS_URL", "")
+# Obtém configurações
+GEMINI_API_KEY = get_secret("GEMINI_API_KEY")
+GOOGLE_DOCS_URL = get_secret("GOOGLE_DOCS_URL")
 
 # =========================================================
 
