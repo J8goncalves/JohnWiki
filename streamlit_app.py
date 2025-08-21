@@ -313,7 +313,7 @@ if question:
             </div>
             ''', unsafe_allow_html=True)
 # Container da conversa
-st.markdown('<div class="chat-container">', unsafe_allow_html=True)
+st.markdown('<div class="chat-container" style="margin-bottom: 120px;">', unsafe_allow_html=True)
 
 # Histórico de mensagens
 for message in st.session_state.messages:
@@ -343,8 +343,12 @@ if question or st.session_state.messages:
     st.markdown("""
     <script>
         setTimeout(function() {
-            window.scrollTo(0, document.body.scrollHeight);
-        }, 100);
+            var element = document.documentElement;
+            element.scrollTo({
+                top: element.scrollHeight,
+                behavior: 'smooth'
+            });
+        }, 300);
     </script>
     """, unsafe_allow_html=True)
 
