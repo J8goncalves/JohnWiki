@@ -102,7 +102,7 @@ st.markdown(f"""
         position: absolute;
         left: 15px;
         top: 15px;
-        border: 2px solid #4e89e8;
+        border: 2px solid #6aa84f;
     }}
     
     .user-avatar {{
@@ -130,7 +130,7 @@ st.markdown(f"""
         color: white;
         font-weight: bold;
         font-size: 20px;
-        border: 2px solid #4e89e8;
+        border: 2px solid #6aa84f;
     }}
     
     .user-avatar-placeholder {{
@@ -163,10 +163,10 @@ st.markdown(f"""
 st.markdown(f"""
 <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
     <div>
-        <img src="https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #4e89e8; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
+        <img src="https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #6aa84f; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
     </div>
     <div>
-        <h1 style="color: #4e89e8; margin: 0; padding: 0; text-align: left;">John Wiki</h1>
+        <h1 style="color: #6aa84f8; margin: 0; padding: 0; text-align: left;">John Wiki</h1>
         <p style="color: #CCCCCC; margin: 5px 0 0 0; text-align: left;">Seu especialista Accountfy</p>
     </div>
 </div>
