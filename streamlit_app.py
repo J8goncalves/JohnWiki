@@ -265,13 +265,22 @@ if st.session_state.messages:
             </div>
             ''', unsafe_allow_html=True)
         else:
-             st.markdown('''
+            st.markdown(f'''
+            <div style="display: flex; justify-content: flex-start; margin: 10px 0;">
+                <div style="background-color: #202C33; color: white; padding: 12px 16px; border-radius: 15px 15px 15px 0; max-width: 70%;">
+                    {message["content"]}
+                </div>
+            </div>
+            ''', unsafe_allow_html=True)
+else:
+    # Mensagem inicial quando não há conversa
+    st.markdown('''
     <div style="text-align: center; padding: 50px 20px; color: #888888;">
         <p>💬 Olá! Como posso ajudar você hoje?</p>
         <p style="font-size: 14px; margin-top: 20px;">Digite sua pergunta abaixo para começar</p>
     </div>
     ''', unsafe_allow_html=True)
-   
+
 
 
 if question:
