@@ -174,8 +174,10 @@ st.markdown(f"""
 <div style="
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 800px;
     background-color: #0E1117;
     padding: 15px 20px;
     z-index: 1000;
