@@ -155,31 +155,6 @@ st.markdown(f"""
         margin-bottom: 40px;
     }}
     
-    .header-avatar {{
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin: 0 auto 20px auto;
-        border: 4px solid #4e89e8;
-        box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);
-    }}
-    
-    .header-avatar-placeholder {{
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        background: linear-gradient(45deg, #4e89e8, #3a76d9);
-        margin: 0 auto 20px auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: bold;
-        font-size: 40px;
-        border: 4px solid #4e89e8;
-        box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);
-    }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -206,26 +181,22 @@ if not st.session_state.document_text or not st.session_state.model:
 document_text = st.session_state.document_text
 model = st.session_state.model
 
-# Header com avatar e nome lado a lado
-st.markdown('<div class="header-content">', unsafe_allow_html=True)
-
-# Tenta carregar a imagem do avatar
-try:
-    # Se a imagem estiver no mesmo repositório
-    st.markdown(f'<img src="{AVATAR_URL}" class="header-avatar" alt="John Wiki Avatar">', unsafe_allow_html=True)
-except:
-    # Fallback para placeholder
-    st.markdown('<div class="header-avatar-placeholder">JW</div>', unsafe_allow_html=True)
-
-# Texto do header
-st.markdown('''
-<div class="header-text">
-    <h1 style="color: #4e89e8; margin-bottom: 10px; margin-top: 0;">John Wiki</h1>
-    <p style="color: #CCCCCC; font-size: 1.1em; margin: 0;">Seu especialista Accountfy</p>
+# Header com avatar
+st.markdown("""
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px;">
+    <div>
+        <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(45deg, #4e89e8, #3a76d9); 
+                    display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; 
+                    font-size: 30px; border: 3px solid #4e89e8; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
+            JW
+        </div>
+    </div>
+    <div>
+        <h1 style="color: #4e89e8; margin: 0; padding: 0;">John Wiki</h1>
+        <p style="color: #CCCCCC; margin: 5px 0 0 0;">Seu especialista Accountfy</p>
+    </div>
 </div>
-''', unsafe_allow_html=True)
-
-st.markdown('</div>', unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
 # Verificar se as configurações estão corretas
 if not GEMINI_API_KEY or not GOOGLE_DOCS_URL:
