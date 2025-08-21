@@ -243,7 +243,7 @@ question = st.chat_input("Digite sua pergunta...", key="unique_chat_input")
 st.markdown('</div>', unsafe_allow_html=True)
 
 
- # Histórico de mensagens apenas se houver mensagens
+# Histórico de mensagens
 if st.session_state.messages:
     for message in st.session_state.messages:
         if message["role"] == "user":
@@ -262,8 +262,7 @@ if st.session_state.messages:
                 </div>
             </div>
             ''', unsafe_allow_html=True)
-else:
-    # Mensagem inicial quando não há conversa
+elif not question:  # Só mostra mensagem inicial se não houver mensagens E não houver pergunta sendo processada
     st.markdown('''
     <div style="text-align: center; padding: 50px 20px; color: #888888;">
         <p>💬 Olá! Como posso ajudar você hoje?</p>
