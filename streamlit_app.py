@@ -26,7 +26,7 @@ GOOGLE_DOCS_URL = get_secret("GOOGLE_DOCS_URL")
 AVATAR_URL = "https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" 
 # =========================================================
 
-@st.cache_data(ttl=3600, show_spinner=False)
+@st.cache_data(ttl=86400, show_spinner=False)
 def load_document():
     """Carrega o documento do Google Docs com cache de 1 hora"""
     try:
