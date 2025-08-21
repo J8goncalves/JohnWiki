@@ -160,13 +160,6 @@ st.markdown(f"""
     margin-bottom: 20px;
 }}
 
-.chat-container {{
-    background-color: #1A1A1A;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 80px;
-    min-height: 400px;
-}}
 
 .footer-fixed {{
     position: fixed;
