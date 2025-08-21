@@ -263,9 +263,6 @@ for message in st.session_state.messages:
         </div>
         ''', unsafe_allow_html=True)
 
-# Input da pergunta
-question = st.chat_input("Digite sua pergunta...")
-
 if question:
     # Adicionar pergunta ao histórico
     st.session_state.messages.append({"role": "user", "content": question})
