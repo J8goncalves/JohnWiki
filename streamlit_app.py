@@ -120,7 +120,7 @@ st.markdown(f"""
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background: linear-gradient(45deg, #4e89e8, #3a76d9);
+        background: linear-gradient(45deg, #6aa84f, #3a76d9);
         position: absolute;
         left: 15px;
         top: 15px;
