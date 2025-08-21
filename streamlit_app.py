@@ -173,7 +173,7 @@ html {{
 st.markdown(f"""
 <div style="
     position: fixed;
-    top: 6.5%;
+    top: 6.3%;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
