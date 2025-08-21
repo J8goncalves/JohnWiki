@@ -155,19 +155,50 @@ st.markdown(f"""
         margin-bottom: 40px;
     }}
 
+    .header-fixed {{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #0E1117;
+    padding: 15px 0;
+    border-bottom: 1px solid #2D2D2D;
+    margin-bottom: 20px;
+}}
+
+.chat-container {{
+    background-color: #1A1A1A;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 80px;
+    min-height: 400px;
+}}
+
+.footer-fixed {{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #0E1117;
+    padding: 15px;
+    border-top: 1px solid #2D2D2D;
+    z-index: 999;
+}}
+
     
 </style>
 """, unsafe_allow_html=True)
 
-# Header com avatar 
+# Header fixo com avatar e nome
 st.markdown(f"""
-<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
-    <div>
-        <img src="https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #6aa84f; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
-    </div>
-    <div>
-        <h1 style="color: #6aa84f; margin: 0; padding: 0; text-align: left;">John Wiki</h1>
-        <p style="color: #CCCCCC; margin: 5px 0 0 0; text-align: left;">Seu especialista Accountfy</p>
+<div class="header-fixed">
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <div>
+            <img src="https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #4e89e8; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
+        </div>
+        <div>
+            <h1 style="color: #6aa84f; margin: 0; padding: 0; text-align: left;">John Wiki</h1>
+            <p style="color: #CCCCCC; margin: 5px 0 0 0; text-align: left;">Seu especialista Accountfy</p>
+        </div>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -284,10 +315,47 @@ if question:
                 </div>
             </div>
             ''', unsafe_allow_html=True)
+# Container da conversa
+st.markdown('<div class="chat-container">', unsafe_allow_html=True)
 
-# Footer
+# Histórico de mensagens
+for message in st.session_state.messages:
+    if message["role"] == "user":
+        st.markdown(f'''
+        <div style="display: flex; justify-content: flex-end; margin: 10px 0;">
+            <div style="background-color: #005C4B; color: white; padding: 12px 16px; border-radius: 15px 15px 0 15px; max-width: 70%;">
+                {message["content"]}
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
+    else:
+        st.markdown(f'''
+        <div style="display: flex; justify-content: flex-start; margin: 10px 0;">
+            <div style="background-color: #202C33; color: white; padding: 12px 16px; border-radius: 15px 15px 15px 0; max-width: 70%;">
+                {message["content"]}
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
+
+st.markdown('</div>', unsafe_allow_html=True)
+
+# Footer fixo com input
+st.markdown('<div class="footer-fixed">', unsafe_allow_html=True)
+question = st.chat_input("Digite sua pergunta...")
+st.markdown('</div>', unsafe_allow_html=True)
+
+if question or st.session_state.messages:
+    st.markdown("""
+    <script>
+        setTimeout(function() {
+            window.scrollTo(0, document.body.scrollHeight);
+        }, 100);
+    </script>
+    """, unsafe_allow_html=True)
+
+# Footer final 
 st.markdown("""
-<div style="text-align: center; margin-top: 30px; padding: 10px; color: #888888; font-size: 16px; opacity: 0.7;">
+<div style="text-align: center; margin-top: 30px; padding: 10px; color: #888888; font-size: 12px; opacity: 0.7;">
 💡 Dica: Faça perguntas específicas para respostas mais precisas
 </div>
 """, unsafe_allow_html=True)
