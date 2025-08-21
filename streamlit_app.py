@@ -283,7 +283,7 @@ if question:
 
     # Gerar resposta
     with st.spinner("John Wiki está pensando..."):
-        
+        try:
             prompt = f"""
             Você é o John Wiki, um assistente de suporte especializado na Accountfy, em contabilidade e finanças. 
             Use EXCLUSIVAMENTE as informações do documento abaixo para responder, este documento contém informações
@@ -318,12 +318,9 @@ if question:
                 </div>
             </div>
             ''', unsafe_allow_html=True)
- except Exception as e:
+            
+        except Exception as e:
             st.error(f"Erro ao gerar resposta: {str(e)}")
-
-
-
-
 
 # Footer final 
 st.markdown("""
