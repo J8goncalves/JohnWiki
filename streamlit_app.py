@@ -287,7 +287,7 @@ if question:
 
 # Footer
 st.markdown("""
-<div style="text-align: center; margin-top: 30px; padding: 10px; color: #888888; font-size: 12px; opacity: 0.7;">
+<div style="text-align: center; margin-top: 30px; padding: 10px; color: #888888; font-size: 16px; opacity: 0.7;">
 💡 Dica: Faça perguntas específicas para respostas mais precisas
 </div>
 """, unsafe_allow_html=True)
