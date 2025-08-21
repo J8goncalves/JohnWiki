@@ -341,8 +341,9 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 # Footer fixo com input
 st.markdown('<div class="footer-fixed">', unsafe_allow_html=True)
-question = st.chat_input("Digite sua pergunta...")
+question = st.chat_input("Digite sua pergunta...", key="unique_chat_input")
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 if question or st.session_state.messages:
     st.markdown("""
