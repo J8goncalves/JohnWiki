@@ -150,11 +150,6 @@ st.markdown(f"""
         border: 2px solid #FF4B4B;
     }}
     
-    .header-content {{
-        text-align: left;
-        margin-bottom: 40px;
-    }}
-
     .header-fixed {{
     position: sticky;
     top: 0;
@@ -183,7 +178,9 @@ st.markdown(f"""
     border-top: 1px solid #2D2D2D;
     z-index: 999;
 }}
-
+html {{
+    scroll-behavior: smooth;
+}}
     
 </style>
 """, unsafe_allow_html=True)
@@ -353,7 +350,7 @@ if question or st.session_state.messages:
 
 # Footer final 
 st.markdown("""
-<div style="text-align: center; margin-top: 30px; padding: 10px; color: #888888; font-size: 12px; opacity: 0.7;">
+<div style="text-align: center; margin-top: 30px; padding: 10px; color: #888888; font-size: 16px; opacity: 0.7;">
 💡 Dica: Faça perguntas específicas para respostas mais precisas
 </div>
 """, unsafe_allow_html=True)
