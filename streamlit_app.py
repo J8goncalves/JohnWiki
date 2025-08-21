@@ -206,7 +206,7 @@ if not st.session_state.document_text or not st.session_state.model:
 document_text = st.session_state.document_text
 model = st.session_state.model
 
-# Header com avatar
+# Header com avatar e nome lado a lado
 st.markdown('<div class="header-content">', unsafe_allow_html=True)
 
 # Tenta carregar a imagem do avatar
@@ -217,8 +217,14 @@ except:
     # Fallback para placeholder
     st.markdown('<div class="header-avatar-placeholder">JW</div>', unsafe_allow_html=True)
 
-st.markdown('<h1 style="color: #4e89e8; margin-bottom: 10px;">John Wiki</h1>', unsafe_allow_html=True)
-st.markdown('<p style="color: #CCCCCC; font-size: 1.1em;">Seu especialista Accountfy</p>', unsafe_allow_html=True)
+# Texto do header
+st.markdown('''
+<div class="header-text">
+    <h1 style="color: #4e89e8; margin-bottom: 10px; margin-top: 0;">John Wiki</h1>
+    <p style="color: #CCCCCC; font-size: 1.1em; margin: 0;">Seu especialista Accountfy</p>
+</div>
+''', unsafe_allow_html=True)
+
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Verificar se as configurações estão corretas
