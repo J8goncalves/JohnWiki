@@ -242,9 +242,21 @@ if not GEMINI_API_KEY or not GOOGLE_DOCS_URL:
 # Histórico de mensagens
 for message in st.session_state.messages:
     if message["role"] == "user":
-        st.markdown(f'<div class="user-question"><strong style="color: #FF4B4B;">Você:</strong> <span style="color: #FFFFFF;">{message["content"]}</span></div>', unsafe_allow_html=True)
+        st.markdown(f'''
+        <div style="display: flex; justify-content: flex-end; margin: 10px 0;">
+            <div style="background-color: #005C4B; color: white; padding: 12px 16px; border-radius: 15px 15px 0 15px; max-width: 70%;">
+                {message["content"]}
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
     else:
-        st.markdown(f'<div class="assistant-response"><strong style="color: #4e89e8;">John Wiki:</strong> <span style="color: #FFFFFF;">{message["content"]}</span></div>', unsafe_allow_html=True)
+        st.markdown(f'''
+        <div style="display: flex; justify-content: flex-start; margin: 10px 0;">
+            <div style="background-color: #202C33; color: white; padding: 12px 16px; border-radius: 15px 15px 15px 0; max-width: 70%;">
+                {message["content"]}
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
 
 # Input da pergunta
 question = st.chat_input("Digite sua pergunta...")
@@ -253,13 +265,13 @@ if question:
     # Adicionar pergunta ao histórico
     st.session_state.messages.append({"role": "user", "content": question})
     
-    st.markdown(
-        f'<div class="user-question">'
-        f'<strong style="color: #FF4B4B;">Você:</strong> '
-        f'<span style="color: #FFFFFF;">{question}</span>'
-        f'</div>', 
-        unsafe_allow_html=True
-    )
+    st.markdown(f'''
+    <div style="display: flex; justify-content: flex-end; margin: 10px 0;">
+        <div style="background-color: #005C4B; color: white; padding: 12px 16px; border-radius: 15px 15px 0 15px; max-width: 70%;">
+            {question}
+        </div>
+    </div>
+    ''', unsafe_allow_html=True)
 
     # Gerar resposta
     with st.spinner("John Wiki está pensando..."):
@@ -291,18 +303,17 @@ if question:
             st.session_state.messages.append({"role": "especialist", "content": resposta})
             
             # Mostrar resposta
-            st.markdown(
-                f'<div class="assistant-response">'
-                f'<strong style="color: #4e89e8;">John Wiki:</strong> '
-                f'<span style="color: #FFFFFF;">{resposta}</span>'
-                f'</div>', 
-                unsafe_allow_html=True
-            )
-
+            st.markdown(f'''
+            <div style="display: flex; justify-content: flex-start; margin: 10px 0;">
+                <div style="background-color: #202C33; color: white; padding: 12px 16px; border-radius: 15px 15px 15px 0; max-width: 70%;">
+                    {resposta}
+                </div>
+            </div>
+            ''', unsafe_allow_html=True)
 
 # Footer
 st.markdown("""
-<div class="footer">
+<div style="text-align: center; margin-top: 30px; padding: 10px; color: #888888; font-size: 12px; opacity: 0.7;">
 💡 Dica: Faça perguntas específicas para respostas mais precisas
 </div>
 """, unsafe_allow_html=True)
