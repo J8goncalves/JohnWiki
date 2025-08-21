@@ -184,20 +184,11 @@ st.markdown(f"""
 </style>
 """, unsafe_allow_html=True)
 
-# Header com avatar
-
-try:
-    # Se a imagem estiver no mesmo repositório
-    st.markdown(f'<img src="{AVATAR_URL}" class="header-avatar" alt="John Wiki Avatar">', unsafe_allow_html=True)
-except:
-st.markdown("""
-<div style="display: flex; align-items: left; justify-content: left; gap: 20px; margin-bottom: 30px;">
+# Header com avatar e nome lado a lado
+st.markdown(f"""
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px;">
     <div>
-        <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(45deg, #4e89e8, #3a76d9); 
-                    display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; 
-                    font-size: 30px; border: 3px solid #4e89e8; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
-            JW
-        </div>
+        <img src="https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #4e89e8; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
     </div>
     <div>
         <h1 style="color: #4e89e8; margin: 0; padding: 0;">John Wiki</h1>
@@ -205,6 +196,7 @@ st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
+
 
 # Inicialização do session_state
 if "messages" not in st.session_state:
