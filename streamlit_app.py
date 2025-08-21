@@ -269,6 +269,18 @@ for message in st.session_state.messages:
 st.markdown('</div>', unsafe_allow_html=True)
 
 
+if question:
+    # Adicionar pergunta ao histórico
+    st.session_state.messages.append({"role": "user", "content": question})
+    
+    st.markdown(f'''
+    <div style="display: flex; justify-content: flex-end; margin: 10px 0;">
+        <div style="background-color: #005C4B; color: white; padding: 12px 16px; border-radius: 15px 15px 0 15px; max-width: 70%;">
+            {question}
+        </div>
+    </div>
+    ''', unsafe_allow_html=True)
+
     # Gerar resposta
     with st.spinner("John Wiki está pensando..."):
         
@@ -306,25 +318,12 @@ st.markdown('</div>', unsafe_allow_html=True)
                 </div>
             </div>
             ''', unsafe_allow_html=True)
+ except Exception as e:
+            st.error(f"Erro ao gerar resposta: {str(e)}")
 
 
 
 
-# Footer fixo com inp
-
-
-if question or st.session_state.messages:
-    st.markdown("""
-    <script>
-        setTimeout(function() {
-            var element = document.documentElement;
-            element.scrollTo({
-                top: element.scrollHeight,
-                behavior: 'smooth'
-            });
-        }, 300);
-    </script>
-    """, unsafe_allow_html=True)
 
 # Footer final 
 st.markdown("""
