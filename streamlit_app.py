@@ -170,7 +170,7 @@ html {{
 # Header fixo com avatar e nome
 st.markdown(f"""
 <div class="header-fixed">
-    <div style="display: flex; align-items: center; gap: 20px;">
+    <div style="display: fixed; align-items: center; gap: 20px;">
         <div>
             <img src="https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #4e89e8; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
         </div>
