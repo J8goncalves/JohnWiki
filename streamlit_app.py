@@ -63,7 +63,7 @@ def setup_gemini():
 
 st.set_page_config(
     page_title="John Wiki - Seu especialista accountfy",
-    page_icon="🙅‍♂️",
+    page_icon="🤖",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
