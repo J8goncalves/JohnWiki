@@ -183,42 +183,6 @@ st.markdown(f"""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-<style>
-    .main { background-color: #0E1117; color: #FFFFFF; padding: 2rem; }
-    .stChatInput { background-color: #0E1117; }
-    .stTextInput textarea { 
-        background-color: #1E1E1E !important; color: #FFFFFF !important; 
-        border: 1px solid #4A4A4A !important; border-radius: 15px !important; padding: 15px !important; 
-    }
-    .stTextInput textarea:focus { border-color: #4e89e8 !important; box-shadow: 0 0 0 1px #4e89e8 !important; }
-    .assistant-response { 
-        background-color: #1E1E1E; color: #FFFFFF; padding: 20px; border-radius: 15px; 
-        border-left: 4px solid #4e89e8; margin: 20px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    .user-question {
-        background-color: #2D2D2D; color: #FFFFFF; padding: 20px; border-radius: 15px; margin: 20px 0;
-        border-left: 4px solid #FF4B4B; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    .header { text-align: center; margin-bottom: 40px; color: #FFFFFF; }
-    .header h1 { color: #4e89e8 !important; font-weight: bold; margin-bottom: 10px; }
-    .header p { color: #CCCCCC !important; font-size: 1.1em; }
-    .stButton button {
-        background-color: #4e89e8 !important; color: white !important; border: none !important;
-        border-radius: 15px !important; padding: 12px 24px !important; font-weight: bold !important;
-    }
-    .stButton button:hover { background-color: #3a76d9 !important; }
-    .stSpinner div { border-color: #4e89e8 transparent transparent transparent !important; }
-    .footer { color: #888888 !important; font-size: 0.9em; text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #2D2D2D; }
-    .stMarkdown, .stText, .stAlert, .stSuccess, .stWarning, .stError { color: #FFFFFF !important; }
-    .stTextInput textarea::placeholder { color: #888888 !important; }
-    .config-error { 
-        background-color: #2D2D2D; color: #FF6B6B; padding: 20px; border-radius: 10px; 
-        border-left: 4px solid #FF4B4B; margin: 20px 0;
-    }
-</style>
-""", unsafe_allow_html=True)
-
 # Inicialização
 if "messages" not in st.session_state:
     st.session_state.messages = []
