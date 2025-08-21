@@ -270,7 +270,10 @@ elif not question:  # Só mostra mensagem inicial se não houver mensagens E nã
     </div>
     ''', unsafe_allow_html=True)
 
-
+historico_conversa = ""
+for msg in st.session_state.messages[:-1]:  # Todas exceto a última (que é a pergunta atual)
+    role = "Usuário" if msg["role"] == "user" else "Assistente"
+    historico_conversa += f"{role}: {msg['content']}\n\n"
 
 if question:
     # Adicionar pergunta ao histórico
@@ -293,12 +296,16 @@ if question:
             sobre chamados encerrados, padrões de uso, conceitos contábeis e pode conter outas informações.
             Analise cuidadosamente as informações e considere as soluções, nem tudo que o usuário mandar será uma pergunta.
 
+            HISTÓRICO DA CONVERSA:
+            {historico_conversa}
+
             DOCUMENTO:
-         {st.session_state.document_text[:500000]}
+            {st.session_state.document_text[:500000]}
 
             PERGUNTA: {question}
 
             RESPONDA:
+            - Baseado no HISTÓRICO DA CONVERSA e no DOCUMENTO
             - De forma clara, simples, direta e útil, seja simpático, o usuário pode elogiar ou agradecer
             - Como um especialista contábil, mas não precisa declarar isso, nem que é um especista, assistente, suporte, etc
             - Apenas com base no documento e não peça o código de chamado, seus chamados são dados históricos
@@ -312,7 +319,7 @@ if question:
             resposta = response.text
 
             # Adicionar resposta ao histórico
-            st.session_state.messages.append({"role": "especialist", "content": resposta})
+            st.session_state.messages.append({"role": "assistant", "content": resposta})
             
             # Mostrar resposta
             st.markdown(f'''
