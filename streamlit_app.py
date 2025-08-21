@@ -206,6 +206,21 @@ if not st.session_state.document_text or not st.session_state.model:
 document_text = st.session_state.document_text
 model = st.session_state.model
 
+# Header com avatar
+st.markdown('<div class="header-content">', unsafe_allow_html=True)
+
+# Tenta carregar a imagem do avatar
+try:
+    # Se a imagem estiver no mesmo repositório
+    st.markdown(f'<img src="{AVATAR_URL}" class="header-avatar" alt="John Wiki Avatar">', unsafe_allow_html=True)
+except:
+    # Fallback para placeholder
+    st.markdown('<div class="header-avatar-placeholder">JW</div>', unsafe_allow_html=True)
+
+st.markdown('<h1 style="color: #4e89e8; margin-bottom: 10px;">John Wiki</h1>', unsafe_allow_html=True)
+st.markdown('<p style="color: #CCCCCC; font-size: 1.1em;">Seu especialista Accountfy</p>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
 # Verificar se as configurações estão corretas
 if not GEMINI_API_KEY or not GOOGLE_DOCS_URL:
     st.markdown("""
