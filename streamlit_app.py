@@ -224,10 +224,10 @@ if not GEMINI_API_KEY or not GOOGLE_DOCS_URL:
 
 
 # Header
-st.markdown('<div class="header">', unsafe_allow_html=True)
+'''st.markdown('<div class="header">', unsafe_allow_html=True)
 st.markdown('<h1>🙅‍♂️ John Wiki</h1>', unsafe_allow_html=True)
 st.markdown('<p>Especialista Accountfy</p>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)'''
 
 # Histórico de mensagens
 for message in st.session_state.messages:
@@ -253,7 +253,7 @@ if question:
 
     # Gerar resposta
     with st.spinner("John Wiki está pensando..."):
-        try:
+        
             prompt = f"""
             Você é o John Wiki, um assistente de suporte especializado na Accountfy, em contabilidade e finanças. 
             Use EXCLUSIVAMENTE as informações do documento abaixo para responder, este documento contém informações
@@ -261,7 +261,7 @@ if question:
             propostas nos comentários e em todo o documento para responder.
 
             DOCUMENTO:
-            {st.session_state.document_text[:30000]}
+            {st.session_state.document_text[:300000]}
 
             PERGUNTA: {question}
 
@@ -289,16 +289,6 @@ if question:
                 unsafe_allow_html=True
             )
 
-        except Exception as e:
-            error_msg = "Desculpe, estou com dificuldades técnicas no momento. Tente novamente em alguns instantes."
-            st.session_state.messages.append({"role": "assistant", "content": error_msg})
-            st.markdown(
-                f'<div class="assistant-response">'
-                f'<strong style="color: #4e89e8;">John Wiki:</strong> '
-                f'<span style="color: #FFFFFF;">{error_msg}</span>'
-                f'</div>', 
-                unsafe_allow_html=True
-            )
 
 # Footer
 st.markdown("""
