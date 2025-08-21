@@ -73,15 +73,6 @@ st.markdown(f"""
     .main {{ background-color: #0E1117; color: #FFFFFF; }}
 
 
-.header-fixed {{
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: #0E1117;
-    padding: 15px 0;
-    border-bottom: 1px solid #2D2D2D;
-    margin-bottom: 20px;
-}}
     
     .stTextInput textarea {{ 
         background-color: #1E1E1E !important; color: #FFFFFF !important; 
@@ -180,7 +171,7 @@ html {{
 
 # Header fixo com avatar e nome
 st.markdown(f"""
-<div class="header-fixed">
+<div id="header-fixed">
     <div style="display: flex; align-items: center; gap: 20px;">
         <div>
             <img src="https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #6aa84f; box-shadow: 0 4px 15px rgba(106, 168, 79, 0.3);">
@@ -191,6 +182,30 @@ st.markdown(f"""
         </div>
     </div>
 </div>
+
+<script>
+    // Fixar header no topo
+    window.addEventListener('scroll', function() {{
+        var header = document.getElementById('header-fixed');
+        if (window.scrollY > 10) {{
+            header.style.position = 'fixed';
+            header.style.top = '0';
+            header.style.left = '0';
+            header.style.right = '0';
+            header.style.background = '#0E1117';
+            header.style.padding = '15px 20px';
+            header.style.zIndex = '1000';
+            header.style.borderBottom = '1px solid #2D2D2D';
+            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+        }} else {{
+            header.style.position = 'relative';
+            header.style.background = 'transparent';
+            header.style.padding = '15px 0';
+            header.style.boxShadow = 'none';
+            header.style.borderBottom = 'none';
+        }}
+    }});
+</script>
 """, unsafe_allow_html=True)
 
 # Inicialização do session_state
