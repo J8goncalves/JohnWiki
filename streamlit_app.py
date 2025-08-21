@@ -226,8 +226,8 @@ st.markdown('<div class="footer-fixed">', unsafe_allow_html=True)
 question = st.chat_input("Digite sua pergunta...", key="unique_chat_input")
 st.markdown('</div>', unsafe_allow_html=True)
 
-   
-    # Histórico de mensagens
+ # Histórico de mensagens apenas se houver mensagens
+if st.session_state.messages:
     for message in st.session_state.messages:
         if message["role"] == "user":
             st.markdown(f'''
@@ -245,8 +245,6 @@ st.markdown('</div>', unsafe_allow_html=True)
                 </div>
             </div>
             ''', unsafe_allow_html=True)
-    
-    st.markdown('</div>', unsafe_allow_html=True)
 else:
     # Mensagem inicial quando não há conversa
     st.markdown('''
