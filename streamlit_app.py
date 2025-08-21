@@ -242,7 +242,10 @@ if not GEMINI_API_KEY or not GOOGLE_DOCS_URL:
     </div>
     """, unsafe_allow_html=True)
     st.stop()
-
+    
+st.markdown('<div class="footer-fixed">', unsafe_allow_html=True)
+question = st.chat_input("Digite sua pergunta...", key="unique_chat_input")
+st.markdown('</div>', unsafe_allow_html=True)
 
 # Histórico de mensagens
 for message in st.session_state.messages:
@@ -336,10 +339,7 @@ for message in st.session_state.messages:
 
 st.markdown('</div>', unsafe_allow_html=True)
 
-# Footer fixo com input
-st.markdown('<div class="footer-fixed">', unsafe_allow_html=True)
-question = st.chat_input("Digite sua pergunta...", key="unique_chat_input")
-st.markdown('</div>', unsafe_allow_html=True)
+# Footer fixo com inp
 
 
 if question or st.session_state.messages:
