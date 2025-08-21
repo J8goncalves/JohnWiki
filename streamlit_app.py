@@ -151,11 +151,54 @@ st.markdown(f"""
     }}
     
     .header-content {{
-        text-align: center;
+        text-align: left;
         margin-bottom: 40px;
+    }}
+
+     .header-avatar {{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 20px auto;
+        border: 4px solid #4e89e8;
+        box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);
+    }}
+    
+    .header-avatar-placeholder {{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #4e89e8, #3a76d9);
+        margin: 0 auto 20px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 40px;
+        border: 4px solid #4e89e8;
+        box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);
     }}
     
 </style>
+""", unsafe_allow_html=True)
+
+# Header com avatar
+st.markdown("""
+<div style="display: flex; align-items: left; justify-content: center; gap: 20px; margin-bottom: 30px;">
+    <div>
+        <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(45deg, #4e89e8, #3a76d9); 
+                    display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; 
+                    font-size: 30px; border: 3px solid #4e89e8; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
+            JW
+        </div>
+    </div>
+    <div>
+        <h1 style="color: #4e89e8; margin: 0; padding: 0;">John Wiki</h1>
+        <p style="color: #CCCCCC; margin: 5px 0 0 0;">Seu especialista Accountfy</p>
+    </div>
+</div>
 """, unsafe_allow_html=True)
 
 # Inicialização do session_state
@@ -181,22 +224,6 @@ if not st.session_state.document_text or not st.session_state.model:
 document_text = st.session_state.document_text
 model = st.session_state.model
 
-# Header com avatar
-st.markdown("""
-<div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px;">
-    <div>
-        <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(45deg, #4e89e8, #3a76d9); 
-                    display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; 
-                    font-size: 30px; border: 3px solid #4e89e8; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
-            JW
-        </div>
-    </div>
-    <div>
-        <h1 style="color: #4e89e8; margin: 0; padding: 0;">John Wiki</h1>
-        <p style="color: #CCCCCC; margin: 5px 0 0 0;">Seu especialista Accountfy</p>
-    </div>
-</div>
-""", unsafe_allow_html=True)
 
 # Verificar se as configurações estão corretas
 if not GEMINI_API_KEY or not GOOGLE_DOCS_URL:
