@@ -166,7 +166,7 @@ st.markdown(f"""
         <img src="https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #6aa84f; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
     </div>
     <div>
-        <h1 style="color: #6aa84f8; margin: 0; padding: 0; text-align: left;">John Wiki</h1>
+        <h1 style="color: #6aa84f; margin: 0; padding: 0; text-align: left;">John Wiki</h1>
         <p style="color: #CCCCCC; margin: 5px 0 0 0; text-align: left;">Seu especialista Accountfy</p>
     </div>
 </div>
