@@ -23,7 +23,7 @@ def get_secret(key, default=""):
 
 GEMINI_API_KEY = get_secret("GEMINI_API_KEY")
 GOOGLE_DOCS_URL = get_secret("GOOGLE_DOCS_URL")
-AVATAR_URL = "https://github.com/J8goncalves/JohnWiki/blob/main/Avatar%20JohnWiki.png" 
+AVATAR_URL = "https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" 
 # =========================================================
 
 @st.cache_data(ttl=3600, show_spinner=False)
@@ -222,9 +222,6 @@ if not GEMINI_API_KEY or not GOOGLE_DOCS_URL:
     """, unsafe_allow_html=True)
     st.stop()
 
-if not st.session_state.model or not st.session_state.document_text:
-    st.error("❌ Erro na configuração. Verifique se a chave API e o URL do documento estão corretos.")
-    st.stop()
 
 # Header
 st.markdown('<div class="header">', unsafe_allow_html=True)
