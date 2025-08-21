@@ -172,8 +172,8 @@ st.markdown(f"""
         background: linear-gradient(45deg, #4e89e8, #3a76d9);
         margin: 0 auto 20px auto;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: left;
+        justify-content: left;
         color: white;
         font-weight: bold;
         font-size: 40px;
@@ -185,8 +185,13 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # Header com avatar
+
+try:
+    # Se a imagem estiver no mesmo repositório
+    st.markdown(f'<img src="{AVATAR_URL}" class="header-avatar" alt="John Wiki Avatar">', unsafe_allow_html=True)
+except:
 st.markdown("""
-<div style="display: flex; align-items: left; justify-content: center; gap: 20px; margin-bottom: 30px;">
+<div style="display: flex; align-items: left; justify-content: left; gap: 20px; margin-bottom: 30px;">
     <div>
         <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(45deg, #4e89e8, #3a76d9); 
                     display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; 
