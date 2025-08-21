@@ -155,48 +155,22 @@ st.markdown(f"""
         margin-bottom: 40px;
     }}
 
-     .header-avatar {{
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin: 0 auto 20px auto;
-        border: 4px solid #4e89e8;
-        box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);
-    }}
-    
-    .header-avatar-placeholder {{
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        background: linear-gradient(45deg, #4e89e8, #3a76d9);
-        margin: 0 auto 20px auto;
-        display: flex;
-        align-items: left;
-        justify-content: left;
-        color: white;
-        font-weight: bold;
-        font-size: 40px;
-        border: 4px solid #4e89e8;
-        box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);
-    }}
     
 </style>
 """, unsafe_allow_html=True)
 
-# Header com avatar e nome lado a lado
+# Header com avatar 
 st.markdown(f"""
-<div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px;">
+<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
     <div>
         <img src="https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #4e89e8; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
     </div>
     <div>
-        <h1 style="color: #4e89e8; margin: 0; padding: 0;">John Wiki</h1>
-        <p style="color: #CCCCCC; margin: 5px 0 0 0;">Seu especialista Accountfy</p>
+        <h1 style="color: #4e89e8; margin: 0; padding: 0; text-align: left;">John Wiki</h1>
+        <p style="color: #CCCCCC; margin: 5px 0 0 0; text-align: left;">Seu especialista Accountfy</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
-
 
 # Inicialização do session_state
 if "messages" not in st.session_state:
