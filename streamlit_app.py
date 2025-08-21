@@ -71,6 +71,17 @@ st.set_page_config(
 st.markdown(f"""
 <style>
     .main {{ background-color: #0E1117; color: #FFFFFF; }}
+
+
+.header-fixed {{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #0E1117;
+    padding: 15px 0;
+    border-bottom: 1px solid #2D2D2D;
+    margin-bottom: 20px;
+}}
     
     .stTextInput textarea {{ 
         background-color: #1E1E1E !important; color: #FFFFFF !important; 
@@ -170,9 +181,9 @@ html {{
 # Header fixo com avatar e nome
 st.markdown(f"""
 <div class="header-fixed">
-    <div style="display: fixed; align-items: center; gap: 20px;">
+    <div style="display: flex; align-items: center; gap: 20px;">
         <div>
-            <img src="https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #4e89e8; box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);">
+            <img src="https://raw.githubusercontent.com/J8goncalves/JohnWiki/refs/heads/main/Avatar%20JohnWiki.png" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #6aa84f; box-shadow: 0 4px 15px rgba(106, 168, 79, 0.3);">
         </div>
         <div>
             <h1 style="color: #6aa84f; margin: 0; padding: 0; text-align: left;">John Wiki</h1>
