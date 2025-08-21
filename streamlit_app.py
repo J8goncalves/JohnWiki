@@ -290,11 +290,12 @@ if question:
             prompt = f"""
             Você é o John Wiki, um assistente de suporte especializado na Accountfy, em contabilidade e finanças. 
             Use EXCLUSIVAMENTE as informações do documento abaixo para responder, este documento contém informações
-            sobre chamados encerrados e padrões de uso, analise cuidadosamente as informações e considere as soluções
+            sobre chamados encerrados e padrões de uso, e conceitos contábeis, pode conter outas informações.
+            Analise cuidadosamente as informações e considere as soluções
             propostas nos comentários e em todo o documento para responder.
 
             DOCUMENTO:
-         {st.session_state.document_text[:100000]}
+         {st.session_state.document_text[:500000]}
 
             PERGUNTA: {question}
 
