@@ -3,6 +3,7 @@ import google.generativeai as genai
 import requests
 import re
 import os
+import base64
 
 def get_secret(key, default=""):
     try:
@@ -19,10 +20,10 @@ def get_secret(key, default=""):
         # Fallback para valor padrão ou vazio
         return default
 
-# Obtém configurações
+
 GEMINI_API_KEY = get_secret("GEMINI_API_KEY")
 GOOGLE_DOCS_URL = get_secret("GOOGLE_DOCS_URL")
-
+AVATAR_URL = "https://github.com/J8goncalves/JohnWiki/blob/main/Avatar%20JohnWiki.png" 
 # =========================================================
 
 @st.cache_data(ttl=3600, show_spinner=False)
@@ -67,6 +68,121 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+st.markdown(f"""
+<style>
+    .main {{ background-color: #0E1117; color: #FFFFFF; }}
+    
+    .stTextInput textarea {{ 
+        background-color: #1E1E1E !important; color: #FFFFFF !important; 
+        border-radius: 15px !important; padding: 15px !important; 
+        border: 1px solid #4A4A4A !important;
+    }}
+    
+    .response-box {{ 
+        background-color: #1E1E1E; color: #FFFFFF; padding: 20px; 
+        border-radius: 15px; border-left: 4px solid #4e89e8; margin: 20px 0;
+        position: relative;
+        padding-left: 70px;
+        min-height: 80px;
+    }}
+    
+    .question-box {{
+        background-color: #2D2D2D; color: #FFFFFF; padding: 20px; 
+        border-radius: 15px; border-left: 4px solid #FF4B4B; margin: 20px 0;
+        position: relative;
+        padding-left: 70px;
+        min-height: 80px;
+    }}
+    
+    .avatar {{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        border: 2px solid #4e89e8;
+    }}
+    
+    .user-avatar {{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        border: 2px solid #FF4B4B;
+    }}
+    
+    .avatar-placeholder {{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #4e89e8, #3a76d9);
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border: 2px solid #4e89e8;
+    }}
+    
+    .user-avatar-placeholder {{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #FF4B4B, #FF6B6B);
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border: 2px solid #FF4B4B;
+    }}
+    
+    .header-content {{
+        text-align: center;
+        margin-bottom: 40px;
+    }}
+    
+    .header-avatar {{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 20px auto;
+        border: 4px solid #4e89e8;
+        box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);
+    }}
+    
+    .header-avatar-placeholder {{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #4e89e8, #3a76d9);
+        margin: 0 auto 20px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 40px;
+        border: 4px solid #4e89e8;
+        box-shadow: 0 4px 15px rgba(78, 137, 232, 0.3);
+    }}
+</style>
+""", unsafe_allow_html=True)
+
 st.markdown("""
 <style>
     .main { background-color: #0E1117; color: #FFFFFF; padding: 2rem; }
@@ -103,13 +219,28 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Inicializar sessões
+# Inicialização
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-if "model" not in st.session_state:
-    st.session_state.model = setup_gemini()
-    st.session_state.document_text = load_document()
+# Header com avatar
+st.markdown('<div class="header-content">', unsafe_allow_html=True)
+
+# Tenta carregar a imagem do avatar
+try:
+    # Se a imagem estiver no mesmo repositório
+    st.markdown(f'<img src="{AVATAR_URL}" class="header-avatar" alt="John Wiki Avatar">', unsafe_allow_html=True)
+except:
+    # Fallback para placeholder
+    st.markdown('<div class="header-avatar-placeholder">JW</div>', unsafe_allow_html=True)
+
+st.markdown('<h1 style="color: #4e89e8; margin-bottom: 10px;">John Wiki</h1>', unsafe_allow_html=True)
+st.markdown('<p style="color: #CCCCCC; font-size: 1.1em;">Seu especialista Accountfy</p>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# Carrega documento e modelo
+document_text = load_document()
+model = setup_gemini()
 
 # Verificar se as configurações estão corretas
 if not GEMINI_API_KEY or not GOOGLE_DOCS_URL:
