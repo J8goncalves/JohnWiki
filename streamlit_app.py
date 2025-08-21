@@ -238,12 +238,6 @@ if not GEMINI_API_KEY or not GOOGLE_DOCS_URL:
     st.stop()
 
 
-# Header
-st.markdown('<div class="header">', unsafe_allow_html=True)
-st.markdown('<h1>John Wiki</h1>', unsafe_allow_html=True)
-st.markdown('<p>Especialista Accountfy</p>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
-
 # Histórico de mensagens
 for message in st.session_state.messages:
     if message["role"] == "user":
