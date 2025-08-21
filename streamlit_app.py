@@ -244,7 +244,10 @@ st.markdown('<div class="footer-fixed">', unsafe_allow_html=True)
 question = st.chat_input("Digite sua pergunta...", key="unique_chat_input")
 st.markdown('</div>', unsafe_allow_html=True)
 
-# Histórico de mensagens
+#Container
+st.markdown('<div class="chat-container" style="margin-bottom: 120px;">', unsafe_allow_html=True)
+
+# Histórico de mensagens (apenas as que ainda não foram exibidas com o novo estilo)
 for message in st.session_state.messages:
     if message["role"] == "user":
         st.markdown(f'''
@@ -263,17 +266,8 @@ for message in st.session_state.messages:
         </div>
         ''', unsafe_allow_html=True)
 
-if question:
-    # Adicionar pergunta ao histórico
-    st.session_state.messages.append({"role": "user", "content": question})
-    
-    st.markdown(f'''
-    <div style="display: flex; justify-content: flex-end; margin: 10px 0;">
-        <div style="background-color: #005C4B; color: white; padding: 12px 16px; border-radius: 15px 15px 0 15px; max-width: 70%;">
-            {question}
-        </div>
-    </div>
-    ''', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
 
     # Gerar resposta
     with st.spinner("John Wiki está pensando..."):
@@ -312,29 +306,9 @@ if question:
                 </div>
             </div>
             ''', unsafe_allow_html=True)
-# Container da conversa
-st.markdown('<div class="chat-container" style="margin-bottom: 120px;">', unsafe_allow_html=True)
 
-# Histórico de mensagens
-for message in st.session_state.messages:
-    if message["role"] == "user":
-        st.markdown(f'''
-        <div style="display: flex; justify-content: flex-end; margin: 10px 0;">
-            <div style="background-color: #005C4B; color: white; padding: 12px 16px; border-radius: 15px 15px 0 15px; max-width: 70%;">
-                {message["content"]}
-            </div>
-        </div>
-        ''', unsafe_allow_html=True)
-    else:
-        st.markdown(f'''
-        <div style="display: flex; justify-content: flex-start; margin: 10px 0;">
-            <div style="background-color: #202C33; color: white; padding: 12px 16px; border-radius: 15px 15px 15px 0; max-width: 70%;">
-                {message["content"]}
-            </div>
-        </div>
-        ''', unsafe_allow_html=True)
 
-st.markdown('</div>', unsafe_allow_html=True)
+
 
 # Footer fixo com inp
 
