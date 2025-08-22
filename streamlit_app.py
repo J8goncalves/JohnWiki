@@ -305,8 +305,8 @@ if question:
             PERGUNTA: {question}
 
             RESPONDA:
-            - Baseado no HISTÓRICO DA CONVERSA e no DOCUMENTO
-            - De forma clara, simples, direta e útil, seja simpático, o usuário pode elogiar ou agradecer
+            - Baseado somente no HISTÓRICO DA CONVERSA e no DOCUMENTO
+            - De forma clara, simples, direta e útil, direcione o usuário com o objetivo de resolver o problema, quando possível detalhe o passo a passo, mas sem inventar nem enrolar
             - Como um especialista contábil, mas não precisa declarar isso, nem que é um especista, assistente, suporte, etc
             - Apenas com base no documento e não peça o código de chamado, seus chamados são dados históricos
             - Se não souber, diga educadamente que não sabe e oriente a procurar o suporte, mas considere sinonimos e abreviações quando for analisar o documento, DF = Demonstração Financeira, B&F Budget & Forcast, etc
